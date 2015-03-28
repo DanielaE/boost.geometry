@@ -44,6 +44,10 @@
 
 #include <boost/geometry/util/range.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
 
 namespace boost { namespace geometry
 {
@@ -494,7 +498,7 @@ struct buffered_piece_collection
                     std::sort(pc.robust_turns.begin(), pc.robust_turns.end(), buffer_operation_less());
                 }
                 // Walk through them, in reverse to insert at right index
-                int index_offset = pc.robust_turns.size() - 1;
+                int index_offset = static_cast<int>(pc.robust_turns.size() - 1);
                 for (typename std::vector<robust_turn>::const_reverse_iterator
                         rit = pc.robust_turns.rbegin();
                     rit != pc.robust_turns.rend();
@@ -559,7 +563,7 @@ struct buffered_piece_collection
 
     inline void start_new_ring()
     {
-        int const n = offsetted_rings.size();
+        int const n = static_cast<int>(offsetted_rings.size());
         current_segment_id.source_index = 0;
         current_segment_id.multi_index = n;
         current_segment_id.ring_index = -1;
@@ -568,7 +572,7 @@ struct buffered_piece_collection
         offsetted_rings.resize(n + 1);
         current_robust_ring.clear();
 
-        m_first_piece_index = boost::size(m_pieces);
+        m_first_piece_index = static_cast<int>(boost::size(m_pieces));
     }
 
     inline void finish_ring(bool is_interior = false)
@@ -583,7 +587,7 @@ struct buffered_piece_collection
             // If piece was added
             // Reassign left-of-first and right-of-last
             geometry::range::at(m_pieces, m_first_piece_index).left_index
-                                                    = boost::size(m_pieces) - 1;
+                                                    = static_cast<int>(boost::size(m_pieces) - 1);
             geometry::range::back(m_pieces).right_index = m_first_piece_index;
         }
         m_first_piece_index = -1;
@@ -616,7 +620,7 @@ struct buffered_piece_collection
 
         current_segment_id.segment_index++;
         offsetted_rings.back().push_back(p);
-        return offsetted_rings.back().size();
+        return static_cast<int>(offsetted_rings.back().size());
     }
 
     //-------------------------------------------------------------------------
@@ -625,7 +629,7 @@ struct buffered_piece_collection
     {
         piece pc;
         pc.type = type;
-        pc.index = boost::size(m_pieces);
+        pc.index = static_cast<int>(boost::size(m_pieces));
         pc.first_seg_id = current_segment_id;
 
         // Assign left/right (for first/last piece per ring they will be re-assigned later)
@@ -950,5 +954,9 @@ struct buffered_piece_collection
 
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_BUFFERED_PIECE_COLLECTION_HPP

@@ -34,6 +34,10 @@
 
 #include <boost/geometry/algorithms/dispatch/disjoint.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
 
 namespace boost { namespace geometry
 {
@@ -191,5 +195,8 @@ struct disjoint<Linear, Box, DimensionCount, linear_tag, box_tag, false>
 
 }} // namespace boost::geometry
 
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_LINEAR_SEGMENT_OR_BOX_HPP

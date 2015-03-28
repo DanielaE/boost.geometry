@@ -44,6 +44,10 @@ Ring (having 8 vertices, including closing vertex)
 
 */
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry
 {
@@ -276,5 +280,8 @@ inline void remove_spikes(Geometry& geometry)
 
 }} // namespace boost::geometry
 
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_REMOVE_SPIKES_HPP

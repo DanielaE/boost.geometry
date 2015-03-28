@@ -36,6 +36,11 @@
 #include <boost/geometry/strategies/cartesian/distance_projected_point_ax.hpp>
 #endif
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4100) // unreferenced formal parameter
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry
 {
@@ -936,5 +941,9 @@ inline void buffer_inserter(GeometryInput const& geometry_input, OutputIterator 
 }} // namespace detail::buffer
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_BUFFER_INSERTER_HPP

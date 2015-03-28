@@ -52,6 +52,10 @@
 
 #include <boost/geometry/algorithms/dispatch/is_valid.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry
 {
@@ -372,5 +376,9 @@ struct is_valid<Polygon, polygon_tag, AllowSpikes, AllowDuplicates>
 
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_POLYGON_HPP

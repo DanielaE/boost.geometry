@@ -22,6 +22,10 @@
 #  include <boost/timer.hpp>
 #endif
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
 
 namespace boost { namespace geometry
 {
@@ -155,6 +159,9 @@ struct assign_visitor
             }
         }
     }
+
+private:
+    assign_visitor& operator=(const assign_visitor&);
 };
 
 
@@ -348,5 +355,8 @@ inline void assign_parents(Geometry const& geometry,
 
 }} // namespace geometry
 
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ASSIGN_PARENTS_HPP

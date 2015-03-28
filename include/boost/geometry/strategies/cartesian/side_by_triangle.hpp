@@ -50,18 +50,18 @@ public :
     template <typename coordinate_type, typename promoted_type, typename P1, typename P2, typename P>
     static inline promoted_type side_value(P1 const& p1, P2 const& p2, P const& p)
     {
-        coordinate_type const x = get<0>(p);
-        coordinate_type const y = get<1>(p);
+        coordinate_type const x = static_cast<coordinate_type>(get<0>(p));
+        coordinate_type const y = static_cast<coordinate_type>(get<1>(p));
 
-        coordinate_type const sx1 = get<0>(p1);
-        coordinate_type const sy1 = get<1>(p1);
-        coordinate_type const sx2 = get<0>(p2);
-        coordinate_type const sy2 = get<1>(p2);
+        coordinate_type const sx1 = static_cast<coordinate_type>(get<0>(p1));
+        coordinate_type const sy1 = static_cast<coordinate_type>(get<1>(p1));
+        coordinate_type const sx2 = static_cast<coordinate_type>(get<0>(p2));
+        coordinate_type const sy2 = static_cast<coordinate_type>(get<1>(p2));
 
-        promoted_type const dx = sx2 - sx1;
-        promoted_type const dy = sy2 - sy1;
-        promoted_type const dpx = x - sx1;
-        promoted_type const dpy = y - sy1;
+        promoted_type const dx = static_cast<promoted_type>(sx2 - sx1);
+        promoted_type const dy = static_cast<promoted_type>(sy2 - sy1);
+        promoted_type const dpx = static_cast<promoted_type>(x - sx1);
+        promoted_type const dpy = static_cast<promoted_type>(y - sy1);
 
         return geometry::detail::determinant<promoted_type>
                 (
@@ -96,7 +96,7 @@ public :
                 double
             >::type promoted_type;
 
-        promoted_type const s = side_value<coordinate_type, promoted_type>(p1, p2, p);
+        promoted_type const s = static_cast<promoted_type>(side_value<coordinate_type, promoted_type>(p1, p2, p));
         promoted_type const zero = promoted_type();
 
         return math::equals(s, zero) ? 0

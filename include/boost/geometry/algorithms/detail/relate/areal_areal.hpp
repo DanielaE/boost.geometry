@@ -27,6 +27,11 @@
 #include <boost/geometry/algorithms/detail/relate/boundary_checker.hpp>
 #include <boost/geometry/algorithms/detail/relate/follow_helpers.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -819,5 +824,9 @@ struct areal_areal
 #endif // DOXYGEN_NO_DETAIL
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_AREAL_AREAL_HPP

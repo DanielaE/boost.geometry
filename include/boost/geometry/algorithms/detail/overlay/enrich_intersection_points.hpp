@@ -34,6 +34,11 @@
 #  include <boost/geometry/algorithms/detail/overlay/check_enrich.hpp>
 #endif
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -104,6 +109,7 @@ struct sort_on_segment_and_ratio
     }
 
 private :
+    sort_on_segment_and_ratio& operator=(const sort_on_segment_and_ratio&);
 
     TurnPoints const& m_turn_points;
     Geometry1 const& m_geometry1;
@@ -552,5 +558,9 @@ inline void enrich_intersection_points(TurnPoints& turn_points,
 }
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ENRICH_HPP

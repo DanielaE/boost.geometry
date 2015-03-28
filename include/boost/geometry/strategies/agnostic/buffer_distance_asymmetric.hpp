@@ -12,6 +12,10 @@
 #include <boost/geometry/strategies/buffer.hpp>
 #include <boost/geometry/util/math.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
 
 namespace boost { namespace geometry
 {
@@ -106,5 +110,9 @@ private :
 
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_STRATEGIES_AGNOSTIC_BUFFER_DISTANCE_ASYMMETRIC_HPP

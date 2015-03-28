@@ -168,6 +168,9 @@ struct intersection<variant<BOOST_VARIANT_ENUM_PARAMS(T)>, Geometry2>
             >
             (geometry1, m_geometry2, m_geometry_out);
         }
+
+    private:
+        visitor& operator=(const visitor&);
     };
     
     template <typename GeometryOut>
@@ -209,6 +212,9 @@ struct intersection<Geometry1, variant<BOOST_VARIANT_ENUM_PARAMS(T)> >
             >
             (m_geometry1, geometry2, m_geometry_out);
         }
+
+    private:
+        visitor& operator=(const visitor&);
     };
     
     template <typename GeometryOut>
@@ -250,6 +256,9 @@ struct intersection<variant<BOOST_VARIANT_ENUM_PARAMS(A)>, variant<BOOST_VARIANT
             >
             (geometry1, geometry2, m_geometry_out);
         }
+
+    private:
+        visitor& operator=(const visitor&);
     };
     
     template <typename GeometryOut>

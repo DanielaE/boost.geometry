@@ -74,6 +74,9 @@ struct point_operation
         set<I>(dest_point,
             Function<coordinate_type>()(get<I>(dest_point), get<I>(m_source_point)));
     }
+
+private:
+    point_operation& operator=(const point_operation&);
 };
 
 

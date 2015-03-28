@@ -64,6 +64,9 @@ struct side_calculator
     Qi const& m_qi;
     Qj const& m_qj;
     Qk const& m_qk;
+
+private:
+    side_calculator& operator=(const side_calculator&);
 };
 
 template <typename Point1, typename Point2, typename RobustPolicy>
@@ -144,6 +147,8 @@ private:
     point2_type const& m_qi;
     point2_type const& m_qj;
     point2_type const& m_qk;
+
+	intersection_info_base& operator=(const intersection_info_base&);
 };
 
 template <typename Point1, typename Point2>
@@ -319,6 +324,8 @@ private:
 
     result_type m_result;
     RobustPolicy const& m_robust_policy;
+
+    intersection_info& operator=(const intersection_info&);
 };
 
 }} // namespace detail::overlay

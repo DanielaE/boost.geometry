@@ -48,6 +48,11 @@
 #include <boost/geometry/views/reversible_view.hpp>
 #include <boost/geometry/geometries/segment.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -609,7 +614,7 @@ inline void enlarge_sections(Sections& sections)
         typedef typename boost::range_value<Sections>::type section_type;
         typedef typename section_type::box_type box_type;
         typedef typename geometry::coordinate_type<box_type>::type coordinate_type;
-        coordinate_type const reps = math::relaxed_epsilon(10.0);
+        coordinate_type const reps = static_cast<coordinate_type>(math::relaxed_epsilon(10));
         geometry::set<0, 0>(it->bounding_box, geometry::get<0, 0>(it->bounding_box) - reps);
         geometry::set<0, 1>(it->bounding_box, geometry::get<0, 1>(it->bounding_box) - reps);
         geometry::set<1, 0>(it->bounding_box, geometry::get<1, 0>(it->bounding_box) + reps);
@@ -802,5 +807,8 @@ inline void sectionalize(Geometry const& geometry,
 
 }} // namespace boost::geometry
 
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_SECTIONS_SECTIONALIZE_HPP

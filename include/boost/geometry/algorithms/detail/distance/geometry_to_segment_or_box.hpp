@@ -36,6 +36,12 @@
 #include <boost/geometry/algorithms/detail/distance/is_comparable.hpp>
 
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#pragma warning(disable: 4701) // potentially uninitialized local variable used
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -458,5 +464,8 @@ struct distance
 
 }} // namespace boost::geometry
 
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_GEOMETRY_TO_SEGMENT_OR_BOX_HPP

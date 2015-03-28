@@ -26,6 +26,10 @@
 
 #include <boost/geometry/geometries/box.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry
 {
@@ -104,7 +108,8 @@ struct self_section_visitor
         }
         return true;
     }
-
+private:
+    self_section_visitor& operator=(const self_section_visitor&);
 };
 
 
@@ -283,5 +288,9 @@ inline void self_turns(Geometry const& geometry,
 
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SELF_TURN_POINTS_HPP

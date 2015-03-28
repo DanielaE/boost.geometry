@@ -71,6 +71,8 @@ private :
             geometry::detail::assign_point_from_index<1>(m_segment, points[1]);
         }
     private :
+        copy_policy& operator=(const copy_policy&);
+
         Segment const& m_segment;
     };
 

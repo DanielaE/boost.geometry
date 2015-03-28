@@ -17,6 +17,11 @@
 #include <boost/geometry/algorithms/detail/overlay/get_turn_info.hpp>
 #include <boost/geometry/algorithms/detail/overlay/get_turn_info_for_endpoint.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry {
 
 #ifndef DOXYGEN_NO_DETAIL
@@ -716,5 +721,9 @@ struct get_turn_info_linear_linear
 #endif // DOXYGEN_NO_DETAIL
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_TURN_INFO_LL_HPP

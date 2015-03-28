@@ -140,7 +140,7 @@ public :
         }
 
         typedef typename promote_floating_point<Type>::type num_type;
-        static const num_type scale = 1000000.0;
+        static const num_type scale = 1000000;
         m_approximation =
             m_denominator == 0 ? 0
             : boost::numeric_cast<double>

@@ -60,6 +60,7 @@ struct sort_in_cluster
     {}
 
 private :
+    sort_in_cluster& operator=(const sort_in_cluster&);
 
     TurnPoints const& m_turn_points;
     Geometry1 const& m_geometry1;
