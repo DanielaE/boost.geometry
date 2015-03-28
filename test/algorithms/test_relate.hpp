@@ -28,6 +28,11 @@
 #include <boost/geometry/strategies/cartesian/box_in_box.hpp>
 #include <boost/geometry/strategies/agnostic/point_in_box_by_side.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace bgdr = bg::detail::relate;
 
 std::string transposed(std::string matrix)
@@ -117,5 +122,9 @@ void test_geometry(std::string const& wkt1,
     bg::read_wkt(wkt2, geometry2);
     check_geometry(geometry1, geometry2, wkt1, wkt2, expected);
 }
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_TEST_RELATE_HPP

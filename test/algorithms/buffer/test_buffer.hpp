@@ -46,6 +46,10 @@
 
 #include <boost/geometry/io/wkt/wkt.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 #if defined(TEST_WITH_SVG)
 
@@ -627,5 +631,8 @@ void test_one(std::string const& caseid, std::string const& wkt,
             distance_left, distance_right, tolerance, &self_ip_count);
 }
 
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif

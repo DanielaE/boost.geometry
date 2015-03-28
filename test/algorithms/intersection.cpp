@@ -37,6 +37,9 @@
 
 BOOST_GEOMETRY_REGISTER_LINESTRING_TEMPLATED(std::vector)
 
+#if defined(_MSC_VER)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 template <typename Polygon>
 void test_areal()
@@ -514,7 +517,7 @@ void test_pointer_version()
     bg::detail::intersection::intersection_insert<output_type>(box, ln, std::back_inserter(clip));
 
     double length = 0;
-    int n = 0;
+    size_t n = 0;
     for (std::vector<output_type>::const_iterator it = clip.begin();
             it != clip.end(); ++it)
     {
@@ -523,7 +526,7 @@ void test_pointer_version()
     }
 
     BOOST_CHECK_EQUAL(clip.size(), 1u);
-    BOOST_CHECK_EQUAL(n, 2);
+    BOOST_CHECK_EQUAL(n, 2u);
     BOOST_CHECK_CLOSE(length, sqrt(2.0 * 6.0 * 6.0), 0.001);
 
     for (unsigned int i = 0; i < ln.size(); i++)

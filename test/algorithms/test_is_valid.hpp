@@ -51,6 +51,9 @@
 #include "pretty_print_geometry.hpp"
 #endif
 
+#if defined(_MSC_VER)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace bg = ::boost::geometry;
 

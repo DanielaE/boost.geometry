@@ -184,7 +184,7 @@ void test_both(std::string const& caseid,
     //return;
 
     std::string reverse;
-    for (int i = expected.size() - 1; i >= 0; i--)
+    for (int i = static_cast<int>(expected.size() - 1); i >= 0; i--)
     {
         reverse += expected[i];
     }

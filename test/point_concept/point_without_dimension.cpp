@@ -45,6 +45,9 @@ template <> struct access<point, 1>
 
 }}} // namespace bg::traits
 
+#if defined(_MSC_VER)
+#pragma warning(disable: 4269) // 'const' automatic data initialized with compiler generated default constructor produces unreliable results
+#endif
 
 int main()
 {

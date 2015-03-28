@@ -47,7 +47,7 @@ inline char side_char(int side)
 }
 
 template <typename Point>
-void test_side1(std::string const& case_id, Point const& p1, Point const& p2, Point const& p3,
+void test_side1(std::string const& /*case_id*/, Point const& p1, Point const& p2, Point const& p3,
                    int expected, int expected_cartesian)
 {
     // std::cout << case_id << ": ";

@@ -24,7 +24,7 @@ void test_geometry(std::string const& wkt, int expected)
 {
     Geometry geometry;
     bg::read_wkt(wkt, geometry);
-    int detected = bg::num_geometries(geometry);
+    size_t detected = bg::num_geometries(geometry);
     BOOST_CHECK_MESSAGE(detected == expected,
         "num_geometries: " << wkt
         << " -> Expected: " << expected

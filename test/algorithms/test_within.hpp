@@ -42,6 +42,11 @@
 #include <boost/geometry/multi/geometries/multi_linestring.hpp>
 #include <boost/geometry/multi/io/wkt/read.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 template <typename Geometry1, typename Geometry2>
 void check_geometry(Geometry1 const& geometry1,
                     Geometry2 const& geometry2,
@@ -150,5 +155,9 @@ void test_ring(std::string const& wkt_point,
     test_ordered_ring<Point, false, false>(wkt_point, wkt_geometry, expected, on_border);
     test_geometry<Point, bg::model::polygon<Point> >(wkt_point, wkt_geometry, expected);
 }
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif

@@ -151,7 +151,7 @@ struct test_segment_iterator_of_geometry
     template <typename G>
     static inline void base_test(G const& geometry,
                                  SegmentRange const& segment_range,
-                                 std::string const& header)
+                                 std::string const&)
     {
         typedef bg::segment_iterator<G const> segment_iterator;
 

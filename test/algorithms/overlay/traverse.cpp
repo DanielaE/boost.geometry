@@ -69,6 +69,10 @@
 
 #include <algorithms/overlay/overlay_cases.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 static inline std::string operation(int d)
 {
     return d == 1 ? "union" : "intersection";
