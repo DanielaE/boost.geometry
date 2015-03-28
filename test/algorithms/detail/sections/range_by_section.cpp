@@ -22,6 +22,9 @@
 #include <boost/geometry/io/wkt/wkt.hpp>
 #include <boost/geometry/util/condition.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 template <int DimensionCount, bool Reverse, typename Geometry>
 void test_sectionalize(std::string const /*caseid*/, Geometry const& geometry, std::size_t section_count)

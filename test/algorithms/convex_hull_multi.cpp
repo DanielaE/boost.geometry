@@ -37,8 +37,9 @@
 #include <boost/geometry/geometries/multi_linestring.hpp>
 #include <boost/geometry/geometries/multi_polygon.hpp>
 
-
-
+#if defined(_MSC_VER)
+#pragma warning(disable: 4245) // conversion from 'int' to 'size_t', signed/unsigned mismatch
+#endif
 
 template <typename P>
 void test_all()

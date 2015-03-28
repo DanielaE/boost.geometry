@@ -61,7 +61,7 @@ check_result(
     bool const is_line = bg::geometry_id<OutputType>::type::value == 2;
 
     typename bg::default_area_result<G1>::type length_or_area = 0;
-    int n = 0;
+    size_t n = 0;
     for (typename std::vector<OutputType>::const_iterator it = intersection_output.begin();
             it != intersection_output.end();
             ++it)

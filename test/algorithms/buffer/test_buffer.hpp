@@ -44,6 +44,10 @@
 #include <boost/geometry/io/wkt/wkt.hpp>
 
 #include <boost/geometry/util/condition.hpp>
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 const double same_distance = -999;
 
@@ -497,6 +501,8 @@ void test_with_custom_strategies(std::string const& caseid,
             true, expected_area, tolerance, NULL);
 }
 
-
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif

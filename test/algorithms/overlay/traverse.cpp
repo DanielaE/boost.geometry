@@ -70,6 +70,10 @@
 
 #include <algorithms/overlay/overlay_cases.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 template <bg::overlay_type Op>
 static inline std::string operation()
 {

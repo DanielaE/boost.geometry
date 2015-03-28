@@ -42,6 +42,9 @@ struct test_const_point
       : c1(c1), c2(c2), c3(c3) { }
 
     const float c1, c2, c3;
+
+private:
+    test_const_point& operator=(const test_const_point&);
 };
 
 } // namespace test
