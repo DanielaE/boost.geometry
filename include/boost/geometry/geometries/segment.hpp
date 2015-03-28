@@ -96,6 +96,7 @@ class referring_segment
 
     typedef ConstOrNonConstPoint point_type;
 
+    referring_segment& operator=(const referring_segment&);
 public:
 
     point_type& first;

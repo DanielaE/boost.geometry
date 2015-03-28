@@ -42,6 +42,11 @@
 
 #include <boost/geometry/algorithms/detail/distance/default_strategies.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -552,5 +557,9 @@ inline void simplify_insert(Geometry const& geometry, OutputIterator out,
 
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_SIMPLIFY_HPP

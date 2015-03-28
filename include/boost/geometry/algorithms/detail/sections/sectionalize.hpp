@@ -54,6 +54,11 @@
 
 #include <boost/geometry/algorithms/detail/expand_by_epsilon.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -613,6 +618,7 @@ inline void enlarge_sections(Sections& sections)
         ++it)
     {
         detail::expand_by_epsilon(it->bounding_box);
+
     }
 }
 
@@ -810,5 +816,8 @@ inline void sectionalize(Geometry const& geometry,
 
 }} // namespace boost::geometry
 
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_SECTIONS_SECTIONALIZE_HPP

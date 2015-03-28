@@ -44,6 +44,11 @@
 
 #include <boost/geometry/util/for_each_coordinate.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(push)
+# pragma warning(disable: 4189) // local variable is initialized but not referenced
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -374,6 +379,8 @@ inline void assign(Geometry1& geometry1, Geometry2 const& geometry2)
 
 }} // namespace boost::geometry
 
-
+#ifdef BOOST_MSVC
+# pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_ASSIGN_HPP

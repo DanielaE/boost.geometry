@@ -104,6 +104,8 @@ struct normalized_view
 private:
     reversible_type m_reversible;
     closeable_type m_closeable;
+
+    normalized_view& operator=(const normalized_view&);
 };
 
 } // namespace detail

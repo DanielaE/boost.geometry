@@ -44,6 +44,7 @@ namespace boost { namespace geometry
 #if defined(_MSC_VER)
 #pragma warning(push)
 #pragma warning(disable : 4127)
+#pragma warning(disable : 4789) // buffer will be overrun
 #endif
 
 

@@ -54,6 +54,10 @@
 #include <boost/geometry/strategies/distance.hpp>
 #include <boost/geometry/strategies/default_length_result.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
 
 namespace boost { namespace geometry
 {
@@ -292,5 +296,9 @@ length(Geometry const& geometry, Strategy const& strategy)
 
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_LENGTH_HPP

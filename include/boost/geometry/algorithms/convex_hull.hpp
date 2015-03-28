@@ -45,6 +45,10 @@
 #include <boost/geometry/algorithms/detail/as_range.hpp>
 #include <boost/geometry/algorithms/detail/assign_box_corners.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry
 {
@@ -371,5 +375,8 @@ inline OutputIterator convex_hull_insert(Geometry const& geometry,
 
 }} // namespace boost::geometry
 
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_CONVEX_HULL_HPP

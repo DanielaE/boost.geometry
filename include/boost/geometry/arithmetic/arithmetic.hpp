@@ -89,6 +89,9 @@ struct point_operation
                         >::type
                 >()(get<Index>(point_dst), get<Index>(m_point_src)));
     }
+
+private:
+    point_operation& operator=(const point_operation&);
 };
 
 

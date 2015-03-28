@@ -20,6 +20,11 @@
 #include <boost/geometry/util/range.hpp>
 //#include <boost/geometry/algorithms/detail/sub_range.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -400,5 +405,9 @@ static inline bool is_ip_on_boundary(IntersectionPoint const& ip,
 #endif // DOXYGEN_NO_DETAIL
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_RELATE_FOLLOW_HELPERS_HPP

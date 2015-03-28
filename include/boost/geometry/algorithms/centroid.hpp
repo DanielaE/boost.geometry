@@ -60,6 +60,10 @@
 
 #include <boost/geometry/algorithms/detail/centroid/translating_transformer.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
 
 namespace boost { namespace geometry
 {
@@ -676,5 +680,8 @@ inline Point return_centroid(Geometry const& geometry, Strategy const& strategy)
 
 }} // namespace boost::geometry
 
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_CENTROID_HPP
