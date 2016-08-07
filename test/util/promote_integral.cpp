@@ -31,6 +31,10 @@
 #include <boost/geometry/util/condition.hpp>
 #include <boost/geometry/util/promote_integral.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(disable: 4756) // overflow in constant arithmetic
+#endif
+
 #if !defined(BOOST_GEOMETRY_NO_MULTIPRECISION_INTEGER)
 #include <boost/multiprecision/cpp_int.hpp>
 #endif
