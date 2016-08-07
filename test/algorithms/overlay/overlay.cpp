@@ -349,7 +349,7 @@ void test_overlay(std::string const& caseid,
     mapper.map(g2, "fill-opacity:0.3;fill:rgb(51,51,153);"
             "stroke:rgb(51,51,153);stroke-width:3");
 #endif
-
+    (void)caseid;
 
     typedef typename boost::range_value<Geometry>::type geometry_out;
     typedef bg::detail::overlay::overlay
