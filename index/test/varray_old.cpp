@@ -12,6 +12,10 @@
 
 #include <boost/geometry/index/detail/varray.hpp>
 
+#ifdef _MSC_VER
+#pragma warning(disable: 4267) // conversion from 'size_t' to 'int', possible loss of data
+#endif
+
 using namespace boost::geometry::index::detail;
 
 class value_ndc

@@ -12,6 +12,10 @@
 
 #include <boost/core/ignore_unused.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry
 {
@@ -63,6 +67,7 @@ inline void sweep(Range const& range, PriorityQueue& queue,
     }
 
     boost::ignore_unused(interrupt_policy);
+    boost::ignore_unused(initialization_visitor);
 }
 
 
@@ -83,5 +88,9 @@ inline void sweep(Range const& range, PriorityQueue& queue,
 
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_SWEEP_HPP

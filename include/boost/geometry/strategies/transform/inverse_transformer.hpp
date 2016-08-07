@@ -60,7 +60,7 @@ public :
         permutation_matrix pm(copy.size1());
 
         // perform LU-factorization
-        int res = boost::numeric::ublas::lu_factorize<matrix_type>(copy, pm);
+        size_t res = boost::numeric::ublas::lu_factorize<matrix_type>(copy, pm);
         if( res == 0 )
         {
             // create identity matrix

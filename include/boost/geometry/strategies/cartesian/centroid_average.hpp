@@ -28,6 +28,10 @@
 #include <boost/geometry/core/point_type.hpp>
 #include <boost/geometry/strategies/centroid.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4267) // conversion ..., possible loss of data
+#endif
 
 namespace boost { namespace geometry
 {
@@ -122,5 +126,8 @@ struct default_strategy
 
 }} // namespace boost::geometry
 
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_AVERAGE_HPP
