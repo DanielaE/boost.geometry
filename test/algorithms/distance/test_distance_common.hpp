@@ -288,6 +288,7 @@ private:
                   << "comp. distance" << header <<" (passed strategy) = "
                   << cdist << std::endl;
 #endif
+        (void)header;
     }
 
 public:
