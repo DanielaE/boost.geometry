@@ -96,7 +96,7 @@ struct strategy_base
     strategy_base(char m_, std::string const& wkt1_)
         : m(m_), expected_count(1), wkt1(wkt1_), opposite(-1)
     {}
-    strategy_base(char m_, std::string const& wkt1_, std::string const& wkt2_, bool opposite_)
+    strategy_base(char m_, std::string const& wkt1_, std::string const&, bool opposite_)
         : m(m_), expected_count(1), wkt1(wkt1_), opposite(opposite_ ? 1 : 0)
     {}
 

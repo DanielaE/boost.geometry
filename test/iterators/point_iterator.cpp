@@ -360,6 +360,7 @@ struct test_point_iterator_of_geometry
             std::cout << std::endl;
             std::cout << std::endl;
 #endif
+            (void)geometry;
         }
     };
 
@@ -749,8 +750,8 @@ BOOST_AUTO_TEST_CASE( test_multipoint_of_point_pointers )
     for (int i = 1; i < 10; i++)
     {
         test::test_point_xy* p = new test::test_point_xy;
-        p->x = i;
-        p->y = -i;
+        p->x = static_cast<float>(i);
+        p->y = static_cast<float>(-i);
         multipoint.push_back(p);
     }
 
@@ -791,8 +792,8 @@ BOOST_AUTO_TEST_CASE( test_linestring_of_point_pointers )
     for (int i = 1; i < 10; i++)
     {
         test::test_point_xy* p = new test::test_point_xy;
-        p->x = i;
-        p->y = -i;
+        p->x = static_cast<float>(i);
+        p->y = static_cast<float>(-i);
         linestring.push_back(p);
     }
 

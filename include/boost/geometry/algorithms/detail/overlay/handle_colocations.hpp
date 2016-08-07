@@ -32,6 +32,11 @@
 #  define BOOST_GEOMETRY_DEBUG_IDENTIFIER
 #endif
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -324,7 +329,7 @@ inline void assign_cluster_to_turns(Turns& turns,
                     std::cout << " CONFLICT " << std::endl;
                 }
 #endif
-                turn.cluster_id = it->second;
+                turn.cluster_id = static_cast<int>(it->second);
                 clusters[turn.cluster_id].turn_indices.insert(turn_index);
             }
         }
@@ -406,6 +411,10 @@ inline bool is_ie_turn(segment_identifier const& ext_seg_0,
             && ext_seg_1.ring_index == other_seg_1.ring_index;
 
     // The other way round is tested in another call
+    (void)ext_seg_0;
+    (void)ext_seg_1;
+    (void)int_seg_0;
+    (void)other_seg_1;
 }
 
 template
@@ -724,5 +733,9 @@ inline void gather_cluster_properties(Clusters& clusters, Turns& turns,
 
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_HANDLE_COLOCATIONS_HPP

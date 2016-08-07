@@ -260,7 +260,7 @@ public:
                              VisitPolicy& visitor,
                              Strategy const& strategy)
     {
-        typedef debug_validity_phase<MultiPolygon> debug_phase;
+        typedef debug_validity_phase<MultiPolygon> debug_phase_t;
 
         if (BOOST_GEOMETRY_CONDITION(
                 AllowEmptyMultiGeometries && boost::empty(multipolygon)))
@@ -269,7 +269,7 @@ public:
         }
 
         // check validity of all polygons ring
-        debug_phase::apply(1);
+        debug_phase_t::apply(1);
 
         if (! detail::check_iterator_range
                   <
@@ -284,7 +284,7 @@ public:
 
 
         // compute turns and check if all are acceptable
-        debug_phase::apply(2);
+        debug_phase_t::apply(2);
 
         typedef has_valid_self_turns<MultiPolygon> has_valid_turns;
 
@@ -301,7 +301,7 @@ public:
 
         // check if each polygon's interior rings are inside the
         // exterior and not one inside the other
-        debug_phase::apply(3);
+        debug_phase_t::apply(3);
 
         if (! have_holes_inside(boost::begin(multipolygon),
                                 boost::end(multipolygon),
@@ -314,7 +314,7 @@ public:
 
 
         // check that each polygon's interior is connected
-        debug_phase::apply(4);
+        debug_phase_t::apply(4);
 
         if (! have_connected_interior(boost::begin(multipolygon),
                                       boost::end(multipolygon),
@@ -327,7 +327,7 @@ public:
 
 
         // check if polygon interiors are disjoint
-        debug_phase::apply(5);
+        debug_phase_t::apply(5);
         return are_polygon_interiors_disjoint(boost::begin(multipolygon),
                                               boost::end(multipolygon),
                                               turns.begin(),

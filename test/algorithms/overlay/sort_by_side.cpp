@@ -30,7 +30,7 @@ template
     typename Geometry1,
     typename Geometry2
 >
-std::size_t test_gather_cluster_properties(std::string const& case_id,
+std::size_t test_gather_cluster_properties(std::string const&,
         Clusters& clusters, Turns& turns,
         bg::detail::overlay::operation_type for_operation,
         Geometry1 const& geometry1, Geometry2 const& geometry2)

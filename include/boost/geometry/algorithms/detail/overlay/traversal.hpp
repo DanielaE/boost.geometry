@@ -27,6 +27,11 @@
 #  include <boost/geometry/io/wkt/wkt.hpp>
 #endif
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -381,7 +386,7 @@ struct traversal
                     }
 
                     turn_index = ranked_point.turn_index;
-                    op_index = ranked_point.operation_index;
+                    op_index = static_cast<int>(ranked_point.operation_index);
 
                     result = true;
                     selected_rank = ranked_point.rank;
@@ -470,7 +475,7 @@ struct traversal
             {
                 typename sbs_type::rp const& ranked_point = sbs.m_ranked_points[selected_index];
                 turn_index = ranked_point.turn_index;
-                op_index = ranked_point.operation_index;
+                op_index = static_cast<int>(ranked_point.operation_index);
                 return true;
             }
         }
@@ -795,5 +800,9 @@ private :
 #endif // DOXYGEN_NO_DETAIL
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSAL_HPP

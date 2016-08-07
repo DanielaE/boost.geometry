@@ -20,6 +20,11 @@
 #include <boost/geometry/core/access.hpp>
 #include <boost/geometry/core/assert.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -140,7 +145,7 @@ struct traversal_switch_detector
         {
             // More turns on this ring. Only leave only_turn_on_ring true
             // if they are all of the same cluster
-            int cluster_id = -1;
+            signed_size_type cluster_id = -1;
             for (set_iterator sit = ring_turn_indices.begin();
                  sit != ring_turn_indices.end(); ++sit)
             {
@@ -339,5 +344,9 @@ private:
 #endif // DOXYGEN_NO_DETAIL
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSAL_SWITCH_DETECTOR_HPP

@@ -567,7 +567,7 @@ public:
             state.m_crosses_prime_meridian++;
         }
 
-        return state.m_crosses_prime_meridian;
+        return static_cast<int>(state.m_crosses_prime_meridian);
     }
 
 };

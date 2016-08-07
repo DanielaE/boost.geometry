@@ -710,7 +710,7 @@ public:
                              ExpandPolicy1 const& expand_policy1,
                              OverlapsPolicy1 const& overlaps_policy1,
                              ExpandPolicy2 const& expand_policy2,
-                             OverlapsPolicy2 const& overlaps_policy2,
+                             OverlapsPolicy2 const&,
                              std::size_t min_elements)
     {
         apply(forward_range1, forward_range2, visitor,
