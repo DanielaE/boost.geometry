@@ -308,7 +308,7 @@ public :
     apply(comparable::pythagoras_point_box<CalculationType> const& ,
           T const& value)
     {
-        return_type const v = value;
+        return_type const v = static_cast<return_type>(value);
         return v * v;
     }
 };

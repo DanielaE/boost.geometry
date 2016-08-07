@@ -71,16 +71,14 @@
 #  include <boost/geometry/io/dsv/write.hpp>
 #endif
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
 
 namespace boost { namespace geometry
 {
-
-// Silence warning C4127: conditional expression is constant
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4127)
-#endif
-
 
 #ifndef DOXYGEN_NO_DETAIL
 namespace detail { namespace get_turns
@@ -1003,10 +1001,10 @@ inline void get_turns(Geometry1 const& geometry1,
             turns, interrupt_policy);
 }
 
-#if defined(_MSC_VER)
+}} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
 #pragma warning(pop)
 #endif
-
-}} // namespace boost::geometry
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_TURNS_HPP

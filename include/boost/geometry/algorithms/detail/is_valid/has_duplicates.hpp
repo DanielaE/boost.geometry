@@ -21,6 +21,10 @@
 #include <boost/geometry/views/closeable_view.hpp>
 #include <boost/geometry/algorithms/validity_failure_type.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
 
 namespace boost { namespace geometry
 {
@@ -75,6 +79,8 @@ struct has_duplicates
 
 }} // namespace boost::geometry
 
-
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_HAS_DUPLICATES_HPP

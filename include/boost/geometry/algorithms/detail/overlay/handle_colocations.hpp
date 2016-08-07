@@ -28,6 +28,11 @@
 #  define BOOST_GEOMETRY_DEBUG_IDENTIFIER
 #endif
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -212,7 +217,7 @@ inline void handle_colocation_cluster(Turns& turns,
         signed_size_type& cluster_id,
         ClusterPerSegment& cluster_per_segment,
         Operations const& operations,
-        Geometry1 const& geometry1, Geometry2 const& geometry2)
+        Geometry1 const&, Geometry2 const&)
 {
     typedef typename boost::range_value<Turns>::type turn_type;
     typedef typename turn_type::turn_operation_type turn_operation_type;
@@ -317,7 +322,7 @@ inline void assign_cluster_to_turns(Turns& turns,
                 {
                     std::cout << " CONFLICT " << std::endl;
                 }
-                turn.cluster_id = it->second;
+                turn.cluster_id = static_cast<int>(it->second);
                 clusters[turn.cluster_id].insert(turn_index);
             }
         }
@@ -578,5 +583,9 @@ inline void assign_startable_in_clusters(Clusters& clusters, Turns& turns,
 
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_HANDLE_COLOCATIONS_HPP

@@ -299,7 +299,7 @@ struct side_sorter
             return;
         }
 
-        int const last = 1 + m_ranked_points.back().main_rank;
+        size_t const last = 1 + m_ranked_points.back().main_rank;
 
         // Move iterator after main_rank==0
         bool has_first = false;

@@ -32,6 +32,11 @@
 #  include <boost/geometry/io/wkt/wkt.hpp>
 #endif
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -314,7 +319,7 @@ struct traversal
                     }
 
                     turn_index = ranked_point.turn_index;
-                    op_index = ranked_point.op_index;
+                    op_index = static_cast<int>(ranked_point.op_index);
 
                     if (is_intersection
                         && ranked_turn.both(operation_intersection)
@@ -323,7 +328,7 @@ struct traversal
                         // Override:
                         // For a ii turn, even though one operation might be selected,
                         // it should take the other one if the first one is used in a completed ring
-                        op_index = 1 - ranked_point.op_index;
+                        op_index = static_cast<int>(1 - ranked_point.op_index);
                     }
 
                     result = true;
@@ -597,10 +602,10 @@ struct traversal
         {
             for (int i = 0; i < 2; i++)
             {
-                turn_operation_type& op = turn.operations[i];
-                if (op.visited.none())
+                turn_operation_type& op_ = turn.operations[i];
+                if (op_.visited.none())
                 {
-                    op.visited.set_visited();
+                    op_.visited.set_visited();
                 }
             }
         }
@@ -857,5 +862,9 @@ public :
 #endif // DOXYGEN_NO_DETAIL
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSE_HPP
