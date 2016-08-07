@@ -117,7 +117,7 @@ namespace projections
 
                     xy_x /= this->m_par.k0;
                     xy_y /= this->m_par.k0;
-                    if((rho = boost::math::hypot(xy_x, xy_y))) {
+                    if((rho = boost::math::hypot(xy_x, xy_y)) != 0) {
                         c = 2. * atan2(rho, this->m_proj_parm.R2);
                         sinc = sin(c);
                         cosc = cos(c);

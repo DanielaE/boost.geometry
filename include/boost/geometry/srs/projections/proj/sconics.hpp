@@ -188,7 +188,7 @@ namespace projections
                 T del, cs;
                 int i;
 
-                if( (i = phi12(par, proj_parm, &del)) )
+                if( (i = phi12(par, proj_parm, &del)) != 0 )
                     BOOST_THROW_EXCEPTION( projection_exception(i) );
                 switch (proj_parm.type) {
                 case TISSOT:

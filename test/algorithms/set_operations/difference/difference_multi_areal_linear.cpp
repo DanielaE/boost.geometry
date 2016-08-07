@@ -33,6 +33,10 @@
 
 #include <boost/geometry/io/wkt/read.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4702) // unreachable code
+#endif
 
 template <typename MultiPolygon, typename MultiLineString>
 void test_areal_linear()

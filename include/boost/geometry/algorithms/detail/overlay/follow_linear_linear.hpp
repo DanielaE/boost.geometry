@@ -37,6 +37,10 @@
 #include <boost/geometry/algorithms/convert.hpp>
 #include <boost/geometry/algorithms/not_implemented.hpp>
 
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry
 {
@@ -553,5 +557,8 @@ struct follow
 
 }} // namespace boost::geometry
 
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_FOLLOW_LINEAR_LINEAR_HPP

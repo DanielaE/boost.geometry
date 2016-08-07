@@ -97,7 +97,7 @@ namespace projections
                 {
                     CalculationType c, d;
 
-                    if((d = acos(cos(lp_lat) * cos(c = 0.5 * lp_lon)))) {/* basic Aitoff */
+                    if((d = acos(cos(lp_lat) * cos(c = 0.5 * lp_lon))) != 0) {/* basic Aitoff */
                         xy_x = 2. * d * cos(lp_lat) * sin(c) * (xy_y = 1. / sin(d));
                         xy_y *= d * sin(lp_lat);
                     } else
@@ -177,7 +177,7 @@ namespace projections
                         if ((fabs(fabs(lp_lat) - TWOPI) < EPSILON) && (!this->m_proj_parm.mode)) lp_lon = 0.; /* if pole in Aitoff, return longitude of 0 */
 
                         /* calculate x,y coordinates with solution obtained */
-                        if((D = acos(cos(lp_lat) * cos(C = 0.5 * lp_lon)))) {/* Aitoff */
+                        if((D = acos(cos(lp_lat) * cos(C = 0.5 * lp_lon))) != 0) {/* Aitoff */
                             x = 2. * D * cos(lp_lat) * sin(C) * (y = 1. / sin(D));
                             y *= D * sin(lp_lat);
                         } else

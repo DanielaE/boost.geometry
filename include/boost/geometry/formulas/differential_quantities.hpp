@@ -15,6 +15,10 @@
 #include <boost/geometry/util/condition.hpp>
 #include <boost/geometry/util/math.hpp>
 
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry { namespace formula
 {
@@ -299,5 +303,8 @@ private:
 
 }}} // namespace boost::geometry::formula
 
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_FORMULAS_INVERSE_DIFFERENTIAL_QUANTITIES_HPP

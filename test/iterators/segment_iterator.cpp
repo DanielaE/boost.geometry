@@ -259,6 +259,7 @@ struct test_segment_iterator_of_geometry
                                                bg::segments_end(geometry)) )
                     ==
                     segments.size());
+        (void)header;
     }
 
     static inline void apply(Geometry geometry,
@@ -693,8 +694,8 @@ BOOST_AUTO_TEST_CASE( test_linestring_of_point_pointers )
     for (int i = 1; i < 10; i++)
     {
         test::test_point_xy* p = new test::test_point_xy;
-        p->x = i;
-        p->y = -i;
+        p->x = static_cast<float>(i);
+        p->y = static_cast<float>(-i);
         linestring.push_back(p);
     }
 

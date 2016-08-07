@@ -58,6 +58,11 @@
 #include <boost/geometry/srs/projections/impl/pj_auth.hpp>
 #include <boost/geometry/srs/projections/impl/pj_qsfn.hpp>
 
+#if BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4505)
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -892,6 +897,10 @@ namespace projections
 } // namespace projections
 
 }} // namespace boost::geometry
+
+#if BOOST_MSVC
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_PROJECTIONS_HEALPIX_HPP
 

@@ -18,6 +18,11 @@
 #include <boost/geometry/algorithms/covered_by.hpp>
 #include <boost/geometry/algorithms/within.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)  
+#pragma warning(disable : 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -215,5 +220,9 @@ struct discard_open_turns<overlay_difference, operation_intersection>
 
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)  
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_HANDLE_SELF_TURNS_HPP

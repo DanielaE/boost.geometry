@@ -22,6 +22,11 @@
 #include <boost/geometry/core/assert.hpp>
 #include <boost/geometry/util/condition.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -514,7 +519,7 @@ struct traversal_switch_detector
 
     inline signed_size_type get_region_id(turn_operation_type const& op) const
     {
-        return op.enriched.region_id;
+        return static_cast<int>(op.enriched.region_id);
     }
 
 
@@ -530,7 +535,7 @@ struct traversal_switch_detector
         // Assign new id if this is a new region
         if (region_id == -1)
         {
-            region_id = new_region_id++;
+            region_id = static_cast<int>(new_region_id++);
         }
 
         // Assign this ring to specified region
@@ -570,6 +575,7 @@ struct traversal_switch_detector
             ring_identifier const& ring_id, signed_size_type region_id)
     {
         typename merge_map::iterator it = m_turns_per_ring.find(ring_id);
+
         if (it != m_turns_per_ring.end())
         {
             create_region(new_region_id, ring_id, it->second, region_id);
@@ -664,5 +670,9 @@ private:
 #endif // DOXYGEN_NO_DETAIL
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSAL_SWITCH_DETECTOR_HPP

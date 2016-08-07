@@ -36,6 +36,12 @@
 
 #include <boost/geometry/util/select_most_precise.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4146) // unary minus operator applied to unsigned type, result still unsigned
+#pragma warning(disable: 4244) // conversion ..., possible loss of data
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -775,5 +781,9 @@ inline Result rounding_cast(T const& v)
 
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_UTIL_MATH_HPP

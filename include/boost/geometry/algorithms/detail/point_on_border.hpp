@@ -36,6 +36,10 @@
 
 #include <boost/geometry/util/condition.hpp>
 
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry
 {
@@ -315,5 +319,8 @@ inline bool point_on_border(Point& point, Geometry const& geometry)
 
 }} // namespace boost::geometry
 
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_POINT_ON_BORDER_HPP

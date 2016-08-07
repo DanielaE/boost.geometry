@@ -29,6 +29,10 @@
 #include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
 
 #include <boost/geometry/policies/compare.hpp>
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 
 namespace boost { namespace geometry
@@ -436,5 +440,8 @@ struct union_pointlike_pointlike_point
 
 }} // namespace boost::geometry
 
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_POINTLIKE_POINTLIKE_HPP

@@ -52,6 +52,10 @@
 #include <cstring>
 #include <cmath>
 
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry { namespace projections
 {
@@ -1005,5 +1009,9 @@ inline bool pj_datum_transform( Par const& srcdefn, Par const& dstdefn,
 } // namespace detail
 
 }}} // namespace boost::geometry::projections
+
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_SRS_PROJECTIONS_IMPL_PJ_TRANSFORM_HPP

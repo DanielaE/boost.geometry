@@ -283,10 +283,10 @@ private:
         calculation_type const anti_p_lon = p_lon + (p_lon <= c0 ? pi : -pi);
 
         eq1 = eq1_strict // lon strictly equal to s1
-            || (eq1_anti = longitudes_equal(s1_lon, anti_p_lon)) // anti-lon strictly equal to s1
+            || ((eq1_anti = longitudes_equal(s1_lon, anti_p_lon)) != false) // anti-lon strictly equal to s1
             || math::equals(math::abs(s1_lat), half_pi); // s1 is pole
         eq2 = eq2_strict // lon strictly equal to s2
-            || (eq2_anti = longitudes_equal(s2_lon, anti_p_lon)) // anti-lon strictly equal to s2
+            || ((eq2_anti = longitudes_equal(s2_lon, anti_p_lon)) != false) // anti-lon strictly equal to s2
             || math::equals(math::abs(s2_lat), half_pi); // s2 is pole
 
         // segment overlapping pole

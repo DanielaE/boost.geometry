@@ -125,7 +125,7 @@ namespace projections
                         tphi = sphi / cphi;
                         Az = atan2(sdlam , C45 * (tphi - cdlam));
                     }
-                    if( (tag = (Az > Azba)) ) {
+                    if( (tag = (Az > Azba)) != 0 ) {
                         cdlam = cos(sdlam = lp_lon + R110);
                         sdlam = sin(sdlam);
                         z = S20 * sphi + C20 * cphi * cdlam;
@@ -187,7 +187,7 @@ namespace projections
                         xy_x = -xy_x * cAzc + xy_y * sAzc;
                         xy_y = -xy_y * cAzc - t * sAzc;
                     }
-                    if( (neg = (xy_x < 0.)) ) {
+                    if( (neg = (xy_x < 0.)) != 0 ) {
                         xy_y = rhoc - xy_y;
                         s = S20;
                         c = C20;
