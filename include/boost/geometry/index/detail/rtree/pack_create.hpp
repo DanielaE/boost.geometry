@@ -73,10 +73,10 @@ struct nth_element_and_half_boxes
             geometry::convert(box, right);
             typename coordinate_type<Box>::type edge_len
                 = geometry::get<max_corner, I>(box) - geometry::get<min_corner, I>(box);
-            typename coordinate_type<Box>::type median
+            typename coordinate_type<Box>::type median_
                 = geometry::get<min_corner, I>(box) + edge_len / 2;
-            geometry::set<max_corner, I>(left, median);
-            geometry::set<min_corner, I>(right, median);
+            geometry::set<max_corner, I>(left, median_);
+            geometry::set<min_corner, I>(right, median_);
         }
         else
             nth_element_and_half_boxes<I+1, Dimension>::apply(first, median, last, box, left, right, dim_index);

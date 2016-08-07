@@ -22,6 +22,10 @@
 
 #include <boost/geometry/algorithms/detail/flattening.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry { namespace formula
 {
@@ -381,5 +385,8 @@ private:
 
 }}} // namespace boost::geometry::formula
 
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_FORMULAS_SJOBERG_INTERSECTION_HPP

@@ -36,6 +36,10 @@
 
 #include <boost/geometry/geometries/concepts/check.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4244) // narrowing conversion
+#endif
 
 namespace boost { namespace geometry
 {
@@ -230,5 +234,8 @@ inline void recalculate(Geometry1& geometry1, Geometry2 const& geometry2, Strate
 
 }} // namespace boost::geometry
 
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_RECALCULATE_HPP

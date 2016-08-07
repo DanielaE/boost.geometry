@@ -41,7 +41,7 @@ struct ranked_point
     {}
 
     template <typename Op>
-    ranked_point(const Point& p, signed_size_type ti, int oi,
+    ranked_point(const Point& p, signed_size_type ti, signed_size_type oi,
                  direction_type d, Op op)
         : point(p)
         , rank(0)
@@ -60,7 +60,7 @@ struct ranked_point
     std::size_t rank;
     signed_size_type zone; // index of closed zone, in uu turn there would be 2 zones
     signed_size_type turn_index;
-    int operation_index; // 0,1
+    signed_size_type operation_index; // 0,1
     direction_type direction;
     std::size_t count_left;
     std::size_t count_right;

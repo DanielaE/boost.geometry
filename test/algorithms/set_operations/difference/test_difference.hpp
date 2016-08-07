@@ -223,7 +223,7 @@ std::string test_difference(std::string const& caseid, G1 const& g1, G2 const& g
 
     if (expected_rings_count >= 0)
     {
-        int nrings = expected_count + bg::num_interior_rings(result);
+        int nrings = expected_count + int(bg::num_interior_rings(result));
         BOOST_CHECK_MESSAGE(nrings == expected_rings_count,
                 "difference: " << caseid
                 << " #rings expected: " << expected_rings_count

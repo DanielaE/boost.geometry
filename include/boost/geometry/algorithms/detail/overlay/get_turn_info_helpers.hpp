@@ -312,10 +312,10 @@ private:
                 typename base::cs_tag, Point, Point, Point, RobustPolicy
             > si;
         
-        typedef typename si::segment_intersection_strategy_type strategy;
+        typedef typename si::segment_intersection_strategy_type strategy_t;
         
-        typename strategy::return_type result
-            = strategy::apply(seg(i, j), seg(j, k), m_robust_policy);
+        typename strategy_t::return_type result
+            = strategy_t::apply(seg(i, j), seg(j, k), m_robust_policy);
         
         return result.template get<0>().count == 2;
     }

@@ -104,14 +104,14 @@ struct relate_cartesian_segments
             // division.
             BOOST_GEOMETRY_ASSERT(ratio.denominator() != 0);
 
-            typedef typename promote_integral<CoordinateType>::type promoted_type;
+            typedef typename promote_integral<CoordinateType>::type promoted_t;
 
-            promoted_type const numerator
-                = boost::numeric_cast<promoted_type>(ratio.numerator());
-            promoted_type const denominator
-                = boost::numeric_cast<promoted_type>(ratio.denominator());
-            promoted_type const dx_promoted = boost::numeric_cast<promoted_type>(dx);
-            promoted_type const dy_promoted = boost::numeric_cast<promoted_type>(dy);
+            promoted_t const numerator
+                = boost::numeric_cast<promoted_t>(ratio.numerator());
+            promoted_t const denominator
+                = boost::numeric_cast<promoted_t>(ratio.denominator());
+            promoted_t const dx_promoted = boost::numeric_cast<promoted_t>(dx);
+            promoted_t const dy_promoted = boost::numeric_cast<promoted_t>(dy);
 
             set<0>(point, get<0, 0>(segment) + boost::numeric_cast
                 <

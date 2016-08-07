@@ -37,6 +37,10 @@
 #  include <boost/geometry/algorithms/detail/overlay/check_enrich.hpp>
 #endif
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
 
 namespace boost { namespace geometry
 {
@@ -342,5 +346,9 @@ inline void enrich_intersection_points(Turns& turns,
 }
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ENRICH_HPP

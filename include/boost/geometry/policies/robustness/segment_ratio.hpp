@@ -20,6 +20,11 @@
 #include <boost/geometry/util/math.hpp>
 #include <boost/geometry/util/promote_floating_point.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4244) // conversion ..., possible loss of data
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -143,7 +148,7 @@ public :
             m_denominator = -m_denominator;
         }
 
-        m_approximation =
+        m_approximation = 
             m_denominator == 0 ? 0
             : boost::numeric_cast<double>
                 (
@@ -187,7 +192,7 @@ public :
             return false;
         }
 
-        static fp_type const small_part_of_scale = scale() / 100.0;
+        static fp_type const small_part_of_scale = scale() / 100;
         return m_approximation < small_part_of_scale
             || m_approximation > scale() - small_part_of_scale;
     }
@@ -251,11 +256,15 @@ private :
 
     static inline fp_type scale()
     {
-        return 1000000.0;
+        return 1000000;
     }
 };
 
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_POLICIES_ROBUSTNESS_SEGMENT_RATIO_HPP

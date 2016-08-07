@@ -24,6 +24,10 @@
 #include <boost/geometry/views/detail/indexed_point_view.hpp>
 #include <boost/geometry/algorithms/detail/check_iterator_range.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
 
 namespace boost { namespace geometry
 {
@@ -147,5 +151,9 @@ struct has_invalid_coordinate<Box, box_tag, true>
 #endif // DOXYGEN_NO_DETAIL
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_HAS_INVALID_COORDINATE_HPP
