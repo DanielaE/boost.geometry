@@ -26,12 +26,12 @@ struct assert_failure_exception
 
 namespace boost { namespace geometry {
 
-inline void assertion_failed(char const * expr, char const * function, char const * file, long line)
+inline void assertion_failed(char const *, char const *, char const *, long)
 {
     throw assert_failure_exception();
 }
 
-inline void assertion_failed_msg(char const * expr, char const * msg, char const * function, char const * file, long line)
+inline void assertion_failed_msg(char const *, char const *, char const *, char const *, long)
 {
     throw assert_failure_exception();
 }

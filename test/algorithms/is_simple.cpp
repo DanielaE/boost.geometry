@@ -77,6 +77,7 @@ void test_simple(Geometry const& geometry, bool expected_result,
         "Expected: " << expected_result
         << " detected: " << simple
         << " wkt: " << bg::wkt(geometry) );
+    (void)check_validity;
 
 #ifdef BOOST_GEOMETRY_TEST_DEBUG
     std::cout << "Geometry: ";

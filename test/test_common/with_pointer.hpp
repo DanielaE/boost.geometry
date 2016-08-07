@@ -60,7 +60,7 @@ struct access<test::test_point_xy, 0>
 
     static void set(test::test_point_xy& p, double const& value)
     {
-        p.x = value;
+        p.x = static_cast<float>(value);
     }
 
 };
@@ -76,7 +76,7 @@ struct access<test::test_point_xy, 1>
 
     static void set(test::test_point_xy& p, double const& value)
     {
-        p.y = value;
+        p.y = static_cast<float>(value);
     }
 
 };
