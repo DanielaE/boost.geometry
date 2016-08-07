@@ -40,6 +40,12 @@
 #include <boost/geometry/util/range.hpp>
 #include <boost/geometry/views/detail/normalized_view.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4100) // unreferenced formal parameter
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
+
 namespace boost { namespace geometry {
 
 #ifndef DOXYGEN_NO_DETAIL
@@ -387,5 +393,9 @@ inline int point_in_geometry(Point const& point, Geometry const& geometry)
 #endif // DOXYGEN_NO_DETAIL
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_WITHIN_POINT_IN_GEOMETRY_HPP

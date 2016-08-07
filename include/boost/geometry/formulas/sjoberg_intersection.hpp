@@ -24,6 +24,10 @@
 #include <boost/geometry/formulas/flattening.hpp>
 #include <boost/geometry/formulas/spherical.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry { namespace formula
 {
@@ -566,8 +570,8 @@ public:
     {
         CT const c0 = 0;
         CT const dLj = d_lambda(c0);
-        CT const asin_tj_t0j = asin(Cj * tan_betaj / sqrt_1_Cj_sqr);
-        return lonj - asin_tj_t0j + dLj;
+        CT const asin_tj_t0j_ = asin(Cj * tan_betaj / sqrt_1_Cj_sqr);
+        return lonj - asin_tj_t0j_ + dLj;
     }
 
     CT d_lambda(CT const& sin_beta) const
@@ -1262,5 +1266,8 @@ private:
 
 }}} // namespace boost::geometry::formula
 
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_FORMULAS_SJOBERG_INTERSECTION_HPP

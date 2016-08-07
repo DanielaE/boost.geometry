@@ -25,6 +25,11 @@
 #include <boost/geometry/algorithms/detail/direction_code.hpp>
 #include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)  
+#pragma warning(disable : 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -641,5 +646,9 @@ public :
 
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)  
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SORT_BY_SIDE_HPP

@@ -92,7 +92,7 @@ struct self_section_visitor
         , m_rescale_policy(rp)
         , m_turns(turns)
         , m_interrupt_policy(ip)
-        , m_source_index(source_index)
+        , m_source_index(static_cast<int>(source_index))
         , m_skip_adjacent(skip_adjacent)
     {}
 

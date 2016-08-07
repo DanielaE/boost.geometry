@@ -185,7 +185,7 @@ std::vector<std::size_t> apply_get_turns(std::string const& case_id,
         previous_to_rank = rank;
         if (set_right)
         {
-            right_count[rank] = ranked_point.count_right;
+            right_count[rank] = static_cast<int>(ranked_point.count_right);
         }
         else
         {
