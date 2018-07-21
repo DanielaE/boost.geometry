@@ -22,6 +22,11 @@
 #include <boost/geometry/formulas/flattening.hpp>
 #include <boost/geometry/formulas/meridian_segment.hpp>
 
+#if defined(_MSC_VER)
+#pragma warning(push)  
+#pragma warning(disable : 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry { namespace formula
 {
 
@@ -172,5 +177,8 @@ public :
 
 }}} // namespace boost::geometry::formula
 
+#if defined(_MSC_VER)
+#pragma warning(pop)  
+#endif
 
 #endif // BOOST_GEOMETRY_FORMULAS_MERIDIAN_INVERSE_HPP

@@ -37,6 +37,10 @@
 #include <boost/geometry/strategies/covered_by.hpp>
 #include <boost/geometry/strategies/disjoint.hpp>
 
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
 
 namespace boost { namespace geometry {
 
@@ -265,5 +269,8 @@ struct multi_point_multi_geometry
 
 }} // namespace boost::geometry
 
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_WITHIN_MULTI_POINT_HPP

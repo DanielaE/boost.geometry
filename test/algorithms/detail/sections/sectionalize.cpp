@@ -34,6 +34,11 @@
 #  include <boost/geometry/algorithms/centroid.hpp>
 #endif
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4702) // unreachable code
+#endif
+
 template <int DimensionCount, typename Geometry>
 void test_sectionalize_part()
 {

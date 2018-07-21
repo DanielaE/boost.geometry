@@ -103,18 +103,18 @@ public :
     static inline
     PromotedType side_value(P1 const& p1, P2 const& p2, P const& p, EpsPolicy & eps_policy)
     {
-        CoordinateType const x = get<0>(p);
-        CoordinateType const y = get<1>(p);
+        CoordinateType const x = static_cast<CoordinateType>(get<0>(p));
+        CoordinateType const y = static_cast<CoordinateType>(get<1>(p));
 
-        CoordinateType const sx1 = get<0>(p1);
-        CoordinateType const sy1 = get<1>(p1);
-        CoordinateType const sx2 = get<0>(p2);
-        CoordinateType const sy2 = get<1>(p2);
+        CoordinateType const sx1 = static_cast<CoordinateType>(get<0>(p1));
+        CoordinateType const sy1 = static_cast<CoordinateType>(get<1>(p1));
+        CoordinateType const sx2 = static_cast<CoordinateType>(get<0>(p2));
+        CoordinateType const sy2 = static_cast<CoordinateType>(get<1>(p2));
 
-        PromotedType const dx = sx2 - sx1;
-        PromotedType const dy = sy2 - sy1;
-        PromotedType const dpx = x - sx1;
-        PromotedType const dpy = y - sy1;
+        PromotedType const dx = static_cast<PromotedType>(sx2 - sx1);
+        PromotedType const dy = static_cast<PromotedType>(sy2 - sy1);
+        PromotedType const dpx = static_cast<PromotedType>(x - sx1);
+        PromotedType const dpy = static_cast<PromotedType>(y - sy1);
 
         eps_policy = EpsPolicy(dx, dy, dpx, dpy);
 

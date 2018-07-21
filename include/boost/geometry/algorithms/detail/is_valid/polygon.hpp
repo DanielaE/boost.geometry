@@ -62,6 +62,11 @@
 
 #include <boost/geometry/algorithms/dispatch/is_valid.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#pragma warning(disable: 4913) // user defined binary operator ',' exists but ...
+#endif
 
 namespace boost { namespace geometry
 {
@@ -527,5 +532,9 @@ struct is_valid
 
 
 }} // namespace boost::geometry
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_POLYGON_HPP

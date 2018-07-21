@@ -167,8 +167,8 @@ inline void calculate_average(Point& point, std::vector<P> const& points)
     }
 
     signed_size_type const count = points.size();
-    geometry::set<0>(point, x / count);
-    geometry::set<1>(point, y / count);
+    geometry::set<0>(point, static_cast<coordinate_type>(x / count));
+    geometry::set<1>(point, static_cast<coordinate_type>(y / count));
 }
 
 

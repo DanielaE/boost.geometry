@@ -775,12 +775,12 @@ public:
                         >::type
                 >::type point_box_strategy_type;
 
-            return dispatch::distance
+            return static_cast<return_type>(dispatch::distance
                 <
                     segment_point,
                     Box,
                     point_box_strategy_type
-                >::apply(p[0], box, point_box_strategy_type());
+                >::apply(p[0], box, point_box_strategy_type()));
         }
 
         box_point top_left, top_right, bottom_left, bottom_right;

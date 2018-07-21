@@ -49,6 +49,11 @@
 #include <boost/geometry/srs/projections/impl/projects.hpp>
 #include <boost/geometry/srs/projections/impl/factory_entry.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4701) // potentially uninitialized local variable 'p2' used
+#endif
+
 namespace boost { namespace geometry
 {
 
@@ -562,6 +567,10 @@ namespace projections
 } // namespace projections
 
 }} // namespace boost::geometry
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_PROJECTIONS_SCONICS_HPP
 

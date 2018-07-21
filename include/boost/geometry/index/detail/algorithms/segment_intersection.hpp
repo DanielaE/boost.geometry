@@ -46,7 +46,7 @@ struct box_segment_intersection_dim
     static inline bool apply(Box const& b, Point const& p0, Point const& p1,
                              RelativeDistance & t_near, RelativeDistance & t_far)
     {
-        RelativeDistance ray_d = geometry::get<I>(p1) - geometry::get<I>(p0);
+        RelativeDistance ray_d = static_cast<RelativeDistance>(geometry::get<I>(p1) - geometry::get<I>(p0));
         RelativeDistance tn = ( geometry::get<min_corner, I>(b) - geometry::get<I>(p0) ) / ray_d;
         RelativeDistance tf = ( geometry::get<max_corner, I>(b) - geometry::get<I>(p0) ) / ray_d;
         if ( tf < tn )

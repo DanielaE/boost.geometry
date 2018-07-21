@@ -77,7 +77,7 @@ namespace projections
 
             template <typename T, typename Par>
             inline void s_forward(T& lp_lon, T& lp_lat, T& xy_x, T& xy_y,
-                                  Par const& par, par_goode<T, Par> const& proj_par)
+                                  Par const&, par_goode<T, Par> const& proj_par)
             {
                 if (fabs(lp_lat) <= PHI_LIM)
                     proj_par.sinu.fwd(lp_lon, lp_lat, xy_x, xy_y);
@@ -89,7 +89,7 @@ namespace projections
 
             template <typename T, typename Par>
             inline void s_inverse(T& xy_x, T& xy_y, T& lp_lon, T& lp_lat,
-                                  Par const& par, par_goode<T, Par> const& proj_par)
+                                  Par const&, par_goode<T, Par> const& proj_par)
             {
                 if (fabs(xy_y) <= PHI_LIM)
                     proj_par.sinu.inv(xy_x, xy_y, lp_lon, lp_lat);

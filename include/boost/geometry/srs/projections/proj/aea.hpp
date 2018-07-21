@@ -196,7 +196,7 @@ namespace projections
                 proj_parm.n = sinphi = sin(proj_parm.phi1);
                 cosphi = cos(proj_parm.phi1);
                 secant = fabs(proj_parm.phi1 - proj_parm.phi2) >= epsilon10;
-                if( (proj_parm.ellips = (par.es > 0.))) {
+                if( (proj_parm.ellips = (par.es > 0.)) != 0) {
                     T ml1, m1;
 
                     proj_parm.en = pj_enfn<T>(par.es);

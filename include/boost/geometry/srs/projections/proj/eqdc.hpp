@@ -70,11 +70,11 @@ namespace projections
             template <typename T>
             struct par_eqdc
             {
-                T    phi1;
-                T    phi2;
-                T    n;
-                T    rho0;
-                T    c;
+                T   phi1;
+                T   phi2;
+                T   n;
+                T   rho0;
+                T   c;
                 detail::en<T> en;
                 bool ellips;
             };
@@ -151,7 +151,7 @@ namespace projections
                 proj_parm.n = sinphi = sin(proj_parm.phi1);
                 cosphi = cos(proj_parm.phi1);
                 secant = fabs(proj_parm.phi1 - proj_parm.phi2) >= epsilon10;
-                if( (proj_parm.ellips = (par.es > 0.)) ) {
+                if( (proj_parm.ellips = (par.es > 0.)) != 0) {
                     double ml1, m1;
 
                     m1 = pj_msfn(sinphi, cosphi, par.es);

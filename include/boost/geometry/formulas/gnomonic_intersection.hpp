@@ -80,7 +80,8 @@ public:
             CT xa1, ya1, xa2, ya2;
             CT xb1, yb1, xb2, yb2;
             CT x, y;
-            double lat1, lon1;
+            double lat1 = 0;
+            double lon1 = 0;
 
             bool ok = gnom_t::forward(lon, lat, lona1, lata1, xa1, ya1, spheroid)
                    && gnom_t::forward(lon, lat, lona2, lata2, xa2, ya2, spheroid)

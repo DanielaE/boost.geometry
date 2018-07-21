@@ -20,7 +20,7 @@
 // Original copyright notice:
 
 // Purpose:  Implementation of the aitoff (Aitoff) and wintri (Winkel Tripel)
-//           projections.
+// projections.
 // Author:   Gerald Evenden (1995)
 //           Drazen Tutic, Lovro Gradiser (2015) - add inverse
 //           Thomas Knudsen (2016) - revise/add regression tests
@@ -100,7 +100,7 @@ namespace projections
                 {
                     T c, d;
 
-                    if((d = acos(cos(lp_lat) * cos(c = 0.5 * lp_lon)))) {/* basic Aitoff */
+                    if((d = acos(cos(lp_lat) * cos(c = 0.5 * lp_lon))) != 0) {/* basic Aitoff */
                         xy_x = 2. * d * cos(lp_lat) * sin(c) * (xy_y = 1. / sin(d));
                         xy_y *= d * sin(lp_lat);
                     } else
@@ -155,14 +155,14 @@ namespace projections
                             sl = sin(lp_lon * 0.5); cl = cos(lp_lon * 0.5);
                             sp = sin(lp_lat); cp = cos(lp_lat);
                             D = cp * cl;
-                            C = 1. - D * D;
+                                   C = 1. - D * D;
                             D = acos(D) / math::pow(C, T(1.5));
-                            f1 = 2. * D * C * cp * sl;
-                            f2 = D * C * sp;
-                            f1p = 2.* (sl * cl * sp * cp / C - D * sp * sl);
-                            f1l = cp * cp * sl * sl / C + D * cp * cl * sp * sp;
-                            f2p = sp * sp * cl / C + D * sl * sl * cp;
-                            f2l = 0.5 * (sp * cp * sl / C - D * sp * cp * cp * sl * cl);
+                                   f1 = 2. * D * C * cp * sl;
+                                   f2 = D * C * sp;
+                                   f1p = 2.* (sl * cl * sp * cp / C - D * sp * sl);
+                                   f1l = cp * cp * sl * sl / C + D * cp * cl * sp * sp;
+                                f2p = sp * sp * cl / C + D * sl * sl * cp;
+                                  f2l = 0.5 * (sp * cp * sl / C - D * sp * cp * cp * sl * cl);
                             if (this->m_proj_parm.mode == mode_winkel_tripel) { /* Winkel Tripel */
                                 f1 = 0.5 * (f1 + lp_lon * this->m_proj_parm.cosphi1);
                                 f2 = 0.5 * (f2 + lp_lat);
@@ -198,7 +198,7 @@ namespace projections
                     {
                         BOOST_THROW_EXCEPTION( projection_exception(error_non_convergent) );
                         //fprintf(stderr, "Warning: Accuracy of 1e-12 not reached. Last increments: dlat=%e and dlon=%e\n", dp, dl);
-                    }
+                }
                 }
 
                 static inline std::string get_name()

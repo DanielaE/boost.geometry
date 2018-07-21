@@ -23,6 +23,11 @@
 #include <boost/geometry/formulas/quarter_meridian.hpp>
 #include <boost/geometry/formulas/result_direct.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 namespace boost { namespace geometry { namespace formula
 {
 
@@ -164,5 +169,9 @@ public:
 };
 
 }}} // namespace boost::geometry::formula
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_FORMULAS_MERIDIAN_DIRECT_HPP

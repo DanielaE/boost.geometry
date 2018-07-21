@@ -606,7 +606,7 @@ private:
     //       in order to make this independent from is_near()
     template <typename Point1, typename Point2, typename ResultInverse, typename CalcT>
     static inline bool calculate_collinear_data(Point1 const& a1, Point1 const& a2, // in
-                                                Point2 const& b1, Point2 const& b2, // in
+                                                Point2 const& b1, Point2 const&,    // in
                                                 ResultInverse const& res_a1_a2,     // in
                                                 ResultInverse const& res_a1_b1,     // in
                                                 ResultInverse const& res_a1_b2,     // in

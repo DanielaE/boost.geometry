@@ -115,7 +115,7 @@ namespace projections
                         cosc = cos(c);
                         lp_lat = asin(cosc * this->m_proj_parm.sinc0 + xy_y * sinc * this->m_proj_parm.cosc0 / rho);
                         lp_lon = atan2(xy_x * sinc, rho * this->m_proj_parm.cosc0 * cosc -
-                                        xy_y * this->m_proj_parm.sinc0 * sinc);
+                            xy_y * this->m_proj_parm.sinc0 * sinc);
                     } else {
                         lp_lat = this->m_proj_parm.phic0;
                         lp_lon = 0.;

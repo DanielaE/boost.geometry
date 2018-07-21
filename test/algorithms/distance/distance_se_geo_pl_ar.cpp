@@ -66,7 +66,7 @@ template
         typename Strategy_pp,
         typename Strategy_ps
 >
-void test_distance_multipoint_ring(Strategy_pp const& strategy_pp,
+void test_distance_multipoint_ring(Strategy_pp const&,
                                     Strategy_ps const& strategy_ps)
 {
 

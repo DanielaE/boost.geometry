@@ -28,6 +28,11 @@
 #include <sstream>
 #include <string>
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable: 4996)
+#endif
+
 namespace boost { namespace geometry { namespace projections
 {
 
@@ -151,5 +156,9 @@ inline std::string pj_strerrno(int err) {
 } // namespace detail
 
 }}} // namespace boost::geometry::projections
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 #endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_STRERRNO_HPP
